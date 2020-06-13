@@ -1,6 +1,6 @@
 <?php
-
 include("conexion.php");
+
 $nom=$_POST['nombre'];
 $ape=$_POST['apellido'];
 $tel=$_POST['telefono'];
@@ -14,5 +14,4 @@ if(!$resultado){
 }else{
     echo "Registrado exitosamente";
 }
-
 ?>
