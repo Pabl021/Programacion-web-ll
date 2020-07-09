@@ -1,6 +1,6 @@
 <?php
   require('functions.php');
-  require_once "conexion.php";
+  require_once "../conexion/conexion.php";
 
 
   if($_POST) {

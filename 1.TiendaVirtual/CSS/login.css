@@ -56,11 +56,24 @@ h3{
     margin-top: 60px;
     border-radius: 10px 0px 20px 0px;
 }
-#inNombre, #inPass, #creaCu, #inApe, #inTel, #inCor, #inDir, #inUsu, #inCon{
+#inNombre, #inPass, #creaCu, #inApe, #inTel, #inCor, #inDir, #inUsu, #inCon, #inCat{
   font-size: 20px;
 }
 
 
 #msj, #error{
     color: red;
+}
+
+#inIma, #proC{
+    background: rgba(247, 219, 203, 0.979);
+    font-size: 20px;
+    width: 100%;
+}
+
+#proC{
+    background: rgba(247, 219, 203, 0.979);
+    font-size: 20px;
+    width: 100%;
+    height: 40px;
 }

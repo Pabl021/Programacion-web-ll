@@ -1,9 +1,11 @@
 <?php 
 session_start();
 require('functions.php');
-require_once "conexion.php";
+require_once "../conexion/conexion.php";
 $user = $_SESSION['user'];
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">

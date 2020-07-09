@@ -28,6 +28,16 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>JP SPORT</title>
+
+    <script type="text/javascript">
+$(document).ready(function() {
+    setTimeout(function() {
+        $(".content").fadeOut(1500);
+    },2000);
+ 
+});
+</script>
+
 </head>
 <body background="run.jpg">
  
@@ -44,7 +54,7 @@
                 <h1 class="text-center"><b>JP STORE</b></h1>
                 <h3 class="text-center">Tu tienda de confianza ✔️</h3>
                 <form action="login.php" method="POST" role="form">
-                <div class="msg" id="msj">
+                <div class="msg content" id="msj">
                  <?php echo $message; ?>
                 </div>
                 <input id="inNombre"type="text" class="form-control" name="usuario" placeholder="👁️USUARIO" autocomplete="off">
