@@ -89,7 +89,7 @@ Categorias
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="background-color: #f7b178;">
           <a class="dropdown-item" href="crear_producto.php">Crear producto</a>
-          <a class="dropdown-item" href="">Ver/Editar/Eliminar producto</a>
+          <a class="dropdown-item" href="manipular_producto.php">Ver/Editar/Eliminar producto</a>
           
         </div>
       </li>

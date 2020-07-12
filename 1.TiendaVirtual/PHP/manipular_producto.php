@@ -1,9 +1,7 @@
 <?php
 include_once "../conexion/conexion.php";
 include_once "metodos.php";
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,11 +11,10 @@ include_once "metodos.php";
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Manipular categoría</title>
+    <title>Manipular producto</title>
 </head>
-<body background="run.jpg">
+<body>
     
-
 
 <nav class=" navbar navbar-expand-lg navbar "style="background-color: #f7b178;">
 
@@ -62,6 +59,9 @@ Categorias
 
 
 
+
+
+
 <style type="text/css">
     <?php
     include '../CSS/login.css';
@@ -71,24 +71,35 @@ Categorias
 <table class="table table-striped table-dark">
   
     <tr>
-      <td scope="col">Código</td>
-      <td scope="col" >Nombre</td>
+      <td scope="col">Nombre</td>
+      <td scope="col" >Descripción</td>
+      <td scope="col" >Imagen</td>
+      <td scope="col" >Código_categoría</td>
+      <td scope="col" >Stock</td>
+      <td scope="col" >Precio</td>
       <td scope="col" > Editar</td>
-      <td scope="col" >Eliminar(sin productos)</td>
+      <td scope="col" >Eliminar</td>
     </tr>
 <?php
-$obj= new metodos();
-$sql= "SELECT id, nombre FROM categoria";
-$datos=$obj->cargarCategorias($sql);
+ $con= new conectar();
+ $conexion= $con->conexion();
+$sql = "SELECT * FROM producto";
+$res= mysqli_query($conexion, $sql);
 
-foreach ($datos as $key ) {
+while($fil= mysqli_fetch_array($res)){
+ 
 ?>
 
   <tr>
-      <td> <?php echo $key['id']?></td>
-      <td> <?php echo $key['nombre']?></td>
-      <td > <a href="editar_categoria.php?id=<?php echo $key['id'] ?>">✏️</a></td>
-      <td > <a href="eliminar_categoria.php?id=<?php echo $key['id'] ?>">⛔</a></td>
+      
+      <td> <?php echo $fil['nombre']?></td>
+      <td> <?php echo $fil['descripcion']?></td>
+      <td><?php echo '<img src = "'.$fil["imagen"].'" width="50" height="50"></img>' ?></td>             
+      <td> <?php echo $fil['codigo_categoria']?></td>
+      <td> <?php echo $fil['stock']?></td>
+      <td> <?php echo $fil['precio']?></td>
+      <td > <a href="editar_producto.php?id=<?php echo $fil['id'] ?>">✏️</a></td> 
+      <td > <a href="eliminar_producto.php?id=<?php echo $fil['id'] ?>">⛔</a></td>
       
      
     </tr>

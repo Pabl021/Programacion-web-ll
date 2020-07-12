@@ -45,5 +45,39 @@
             return $result= mysqli_query($conexion, $sql);
         }
 
+        public function insertarProducto($datos){
+            $con= new conectar();
+            $conexion= $con->conexion();
+            $sql= "INSERT INTO producto(nombre, descripcion, imagen, codigo_categoria, stock, precio)
+             values('$datos[0]','$datos[1]','$datos[2]','$datos[3]','$datos[4]','$datos[5]')";
+            
+            return $result= mysqli_query($conexion, $sql);           
+        }
+
+        public function cargarProductos($sql){
+            $con= new conectar();
+            $conexion= $con->conexion();
+            $result= mysqli_query($conexion, $sql); 
+            return mysqli_fetch_all($result, MYSQLI_ASSOC);
+        }
+
+        public function eliminarProducto($id){
+            $con= new conectar();
+            $conexion= $con->conexion();
+            $sql="DELETE from producto WHERE id='$id'";
+            return $result= mysqli_query($conexion, $sql);
+        }
+
+        public function editarProducto($datos){
+            $con= new conectar();
+            $conexion= $con->conexion();
+            $sql= "UPDATE producto set nombre='$datos[0]',descripcion='$datos[1]',imagen='$datos[2]', 
+            codigo_categoria='$datos[3]', stock='$datos[4]', precio='$datos[5]' WHERE id='$datos[6]'";
+            return $result= mysqli_query($conexion, $sql);
+        }
+
+
+
+
     }
 ?>
