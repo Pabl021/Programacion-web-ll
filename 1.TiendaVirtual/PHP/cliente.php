@@ -5,7 +5,10 @@ session_start();
 require('functions.php');
 require_once "../conexion/conexion.php";
 $user = $_SESSION['user'];
+
+
 ?>
+
 
 
       <!DOCTYPE html>
@@ -28,9 +31,6 @@ $user = $_SESSION['user'];
 </style> 
 
 
-
-
-
   <nav class=" navbar navbar-expand-lg navbar "style="background-color: #f7b178;">
 
                 <a class="navbar-brand" href="#">
@@ -45,8 +45,9 @@ $user = $_SESSION['user'];
     <ul class="navbar-nav mr-auto">
     
         
-        <select id="proC" name="rolCat">
-        <option >Escoja su categoría</option>  
+    <select id="proC" name="rolCat" onchange="location = this.value">
+
+        <option value="cliente.php" selected="selected" >Escoja su categoría</option>  
           <?php
           
                 $obj= new metodos();
@@ -55,27 +56,32 @@ $user = $_SESSION['user'];
 
                 foreach ($datos as $key ) {                   
                 ?>
-                 
-                <option value="<?php echo $key['id']?>"><?php echo $key['nombre']?></option> 
-                   
+              
+             
+       <option  value="vista_cliente.php?id=<?php echo $key['id'] ?>"><?php echo $key['nombre']?>  </option>       
+      
+           
 
                     <?php
                 }
                     ?>
-          </select> 
+          </select>  
       
      
       
 
     </ul>
     <form class="form-inline my-2 my-lg-0">
-    <a class="compras" href="vista_cliente.php" style="color:black;"><h3>🛒</h3></a>
+    <button type="button" class="btn btn-dark " data-toggle="modal" data-target="#myModal">🛒</button>
     </form>
+               
     <form class="form-inline my-2 my-lg-0">
     <a class="cerrar_ses" href="/logout.php" style="color:black;"><h5>Cerrar Sesión</h5></a>
     </form>
   </div>
 </nav>
+
+
 
 
 
