@@ -42,9 +42,9 @@ $user = $_SESSION['user'];
 <ul class="navbar-nav mr-auto">
 
 
-<select id="proC" name="rolCat" onchange="location = this.value">
+<select id="proC" name="rolCat" onchange="location.href=this.value">
 
-<option value="cliente.php" selected="selected" >Escoja su categoría</option>  
+<option selected disabled >*Escoja su categoría*</option>  
 <?php
 
 $obj= new metodos();
@@ -53,26 +53,80 @@ $datos=$obj->cargarCategorias($sql);
 
 foreach ($datos as $key ) {                   
 ?>
-
-
-<option  value="vista_cliente.php?id=<?php echo $key['id'] ?>"><?php echo $key['nombre']?>  </option>       
-
+<option value="vista_cliente.php?id=<?php echo $key['id'] ?>"><?php echo $key['nombre']?>  </option>       
     <?php
 }
     ?>
 </select>  
 
 
+
 </ul>
 <form class="form-inline my-2 my-lg-0">
     
-    <a class="dropdown-item" href="listar_productos_comprar.php"><button type="button" class="btn btn-dark " data-toggle="modal" data-target="#myModal">🛒</button></a>
+   <button type="button" class="btn btn-dark " data-toggle="modal" data-target="#myModal">🛒</button>
     </form>
 <form class="form-inline my-2 my-lg-0">
 <a class="cerrar_ses" href="/logout.php" style="color:black;"><h5>Cerrar Sesión</h5></a>
 </form>
 </div>
 </nav>
+
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title">Lista de productos a comprar</h4>
+      </div>
+      <div class="modal-body">
+      
+      <table class="table table-striped table-dark">
+  
+    <tr>
+      <td scope="col">Nombre</td>
+      <td scope="col" >Precio</td>
+      <td scope="col" >Eliminar</td>
+    </tr>
+<?php
+$idlog=$user['id'];
+ $con= new conectar();
+ $conexion= $con->conexion();
+$sql = "SELECT * FROM producto_comprar WHERE id_cliente=$idlog";
+$res= mysqli_query($conexion, $sql);
+
+while($fil= mysqli_fetch_array($res)){
+ 
+?>
+
+  <tr>
+      
+      <td> <?php echo $fil['nombre']?></td>
+      <td> <?php echo $fil['precio']?></td>
+      <td > <a href="eli_pro_car.php?id=<?php echo $fil['id'] ?>">⛔</a></td>
+      
+     
+    </tr>
+
+    <?php
+}
+    ?>
+ 
+</table>
+
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Realizar Compra</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 <?php
 
@@ -85,7 +139,6 @@ $res= mysqli_query($conexion, $sql);
 
 while( $record = mysqli_fetch_assoc($res) ) {
  
-  
 ?>
 
 <div class="card contenedor" style="width: 16rem; height: 26rem;" >

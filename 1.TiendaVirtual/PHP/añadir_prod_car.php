@@ -17,8 +17,9 @@
     $datos= array($idLog,$idPro, $nomPro,$precio,$compro);           
         $obj= new metodos();
         if($obj->insertarProductoCompra($datos)==1){               
-           
-        }else{
+            header('Location:vista_cliente.php');
+        }         
+        else{
             echo "fallo al agregar";
         }
 ?>

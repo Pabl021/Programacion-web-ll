@@ -3,7 +3,7 @@ include_once "../conexion/conexion.php";
 include_once "metodos.php";
 session_start();
 require('functions.php');
-require_once "../conexion/conexion.php";
+
 $user = $_SESSION['user'];
 
 
@@ -81,7 +81,61 @@ $user = $_SESSION['user'];
   </div>
 </nav>
 
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <h4 class="modal-title">Lista de productos a comprar</h4>
+      </div>
+      <div class="modal-body">
+      
+      <table class="table table-striped table-dark">
+  
+    <tr>
+      <td scope="col">Nombre</td>
+      <td scope="col" >Precio</td>
+      <td scope="col" >Eliminar</td>
+    </tr>
+<?php
+$idlog=$user['id'];
+ $con= new conectar();
+ $conexion= $con->conexion();
+$sql = "SELECT * FROM producto_comprar WHERE id_cliente=$idlog";
+$res= mysqli_query($conexion, $sql);
+
+while($fil= mysqli_fetch_array($res)){
+ 
+?>
+
+  <tr>
+      
+      <td> <?php echo $fil['nombre']?></td>
+      <td> <?php echo $fil['precio']?></td>
+      <td > <a href="eli_pro_car.php?id=<?php echo $fil['id'] ?>">⛔</a></td>
+      
+     
+    </tr>
+
+    <?php
+}
+    ?>
+ 
+</table>
+
+      
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Realizar Compra</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 
