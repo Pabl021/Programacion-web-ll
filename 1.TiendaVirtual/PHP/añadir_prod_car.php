@@ -1,7 +1,7 @@
 <?php
      include_once "../conexion/conexion.php";
      include "metodos.php";
-     include_once "vista_cliente.php";
+     
     
      
      $con= new conectar();
@@ -17,7 +17,7 @@
     $datos= array($idLog,$idPro, $nomPro,$precio,$compro);           
         $obj= new metodos();
         if($obj->insertarProductoCompra($datos)==1){               
-            header('Location:vista_cliente.php');
+            header("Location:vista_cliente.php?id=$idPro");
         }         
         else{
             echo "fallo al agregar";
