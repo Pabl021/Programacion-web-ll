@@ -62,15 +62,56 @@ foreach ($datos as $key ) {
 
 
 </ul>
-<form class="form-inline my-2 my-lg-0">
-    
+<form class="form-inline my-2 my-lg-0">   
    <button type="button" class="btn btn-dark " data-toggle="modal" data-target="#myModal">🛒</button>
     </form>
+<form class="form-inline my-2 my-lg-0">
+    <a class="estadis" href="estadisticas_cliente.php" style="color:black;"><h5>Compras realizadas</h5></a>
+</form>
 <form class="form-inline my-2 my-lg-0">
 <a class="cerrar_ses" href="/logout.php" style="color:black;"><h5>Cerrar Sesión</h5></a>
 </form>
 </div>
 </nav>
+                                            
+
+<?php
+
+$con= new conectar();
+ $conexion= $con->conexion();
+ $id= $_GET['id'];
+$sql = "SELECT * FROM producto WHERE codigo_categoria='$id' AND stock>=2";
+$res= mysqli_query($conexion, $sql);
+
+
+while( $record = mysqli_fetch_assoc($res) ) {
+ 
+?>
+
+<div class="card contenedor" style="width: 16rem; height: 26rem;" >
+  <img  style=" width: 100px; height: 100px;" class=" img card-img-top" src="<?php echo $record['imagen']; ?>" alt="Card image cap">
+  <div class="card-body ">
+  <div class="title">
+<a style="color:green;"><?php echo $record['nombre']; ?></a>
+</div>
+<div style=" width: 190px; height: 100px;" class="desc"><?php echo $record['descripcion']; ?></div>
+<div >Precio: <?php echo $record['precio']; ?></div>
+<div >Código: <?php echo $record['id']; ?></div>
+
+
+
+<a href="añadir_prod_car.php?id=<?php echo $record['id']; ?> 
+&& nom=<?php echo $record['nombre']; ?> 
+&& idLog=<?php echo $user['id']; ?>
+&& des=<?php echo $record['descripcion'];?>
+&& precio=<?php echo $record['precio']; ?>"> 
+<button  type="submit" class="btn btn-primary" >🛒</button></a></div>
+
+</div>
+
+<?php } ?>
+
+
 
 
 <div id="myModal" class="modal fade" role="dialog">
@@ -95,11 +136,12 @@ foreach ($datos as $key ) {
 $idlog=$user['id'];
  $con= new conectar();
  $conexion= $con->conexion();
-$sql = "SELECT * FROM producto_comprar WHERE id_cliente=$idlog";
+$sql = "SELECT * FROM producto_comprar WHERE id_cliente=$idlog AND compro=true";
 $res= mysqli_query($conexion, $sql);
 
+
 while($fil= mysqli_fetch_array($res)){
- 
+
 ?>
 
   <tr>
@@ -108,56 +150,56 @@ while($fil= mysqli_fetch_array($res)){
       <td> <?php echo $fil['precio']?></td>
       <td > <a href="eli_pro_car.php?id=<?php echo $fil['id'] ?>">⛔</a></td>
       
-     
     </tr>
 
     <?php
 }
     ?>
- 
+    
 </table>
 
-        
+
+      
+<?php
+    $idlog=$user['id'];
+    $con= new conectar();
+    $conexion= $con->conexion();
+    $suma="SELECT SUM(precio) FROM producto_comprar WHERE id_cliente=$idlog AND compro=true";   
+    $consulta = mysqli_query($conexion,$suma);
+    
+    $sum = 0; 
+    while ($row = mysqli_fetch_array($consulta)){
+     $suma= intval($row[0]);                   
+    }
+   
+?>
+ <label for=""><h3>EL total a pagar es de: <?php echo $suma ?></h3> </label>
+
+
+  
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Realizar Compra</button>
-      </div>
-    </div>
+
+        <?php 
+         $con= new conectar();
+         $conexion= $con->conexion();
+        $sql1 = "SELECT id FROM producto_comprar WHERE id_cliente=$idlog AND compro=true";
+        $res1= mysqli_query($conexion, $sql1);
+        
+      
+        while($fill=mysqli_fetch_array($res1)){                
+            $idP=$fill['id'];
+        }
+         ?>
+      <a href="realizar_compra.php? idLog=<?php echo $user['id']; ?> ">  <button type="button" class="btn btn-success " data-toggle="modal" >Realizar Compra</button></a>
+
+
+      </div>     
 
   </div>
 </div>
 
-<?php
-
-$con= new conectar();
- $conexion= $con->conexion();
- $id= $_GET['id'];
-$sql = "SELECT * FROM producto WHERE codigo_categoria='$id'";
-$res= mysqli_query($conexion, $sql);
-
-
-while( $record = mysqli_fetch_assoc($res) ) {
- 
-?>
-
-<div class="card contenedor" style="width: 16rem; height: 26rem;" >
-  <img  style=" width: 100px; height: 100px;" class=" img card-img-top" src="<?php echo $record['imagen']; ?>" alt="Card image cap">
-  <div class="card-body ">
-  <div class="title">
-<a style="color:green;"><?php echo $record['nombre']; ?></a>
-</div>
-<div style=" width: 190px; height: 100px;" class="desc"><?php echo $record['descripcion']; ?></div>
-<div >Precio: <?php echo $record['precio']; ?></div>
-<div >Código: <?php echo $record['id']; ?></div>
-<a href="añadir_prod_car.php?id=<?php echo $record['id']; ?> 
-&& nom=<?php echo $record['nombre']; ?> 
-&& idLog=<?php echo $user['id']; ?>
-&& precio=<?php echo $record['precio']; ?>"> <button  type="submit" class="btn btn-primary" >🛒</button></a> </div>
-
-</div>
-
-<?php } ?>
 
 
 

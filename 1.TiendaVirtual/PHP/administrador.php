@@ -10,6 +10,17 @@ $result= mysqli_query($conexion, $sql);
 $ver=mysqli_fetch_row($result);
 $clientes=implode($ver);
 
+$sqlPV="SELECT count(*) nombre FROM producto_comprar WHERE compro=false";
+$result= mysqli_query($conexion, $sqlPV);
+$ver=mysqli_fetch_row($result);
+$proVen=implode($ver);
+
+$montoPro="SELECT SUM(precio) FROM producto_comprar WHERE  compro=false";
+$result= mysqli_query($conexion, $montoPro);
+$ver=mysqli_fetch_row($result);
+$total=implode($ver);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -88,8 +99,8 @@ $clientes=implode($ver);
                 <form action="" method="POST">               
                 
                <label><h4>Clientes registrados:<b> <?php  echo $clientes; ?> </b></h4></label>
-               <label><h4> Productos vendidos:</h4> </label>
-               <label><h4>Monto total de ventas:</h4> </label>
+               <label><h4>Total productos vendidos:<b> <?php  echo $proVen; ?> </b></h4> </label>
+               <label><h4>Monto total de ventas:<b> <?php  echo $total; ?> </b></h4> </label>
                 
                 </form>            
             </div>

@@ -92,7 +92,15 @@
             return $result= mysqli_query($conexion, $sql);
         }
 
-
+        public function insertarDatosCompra($datos){
+            $con= new conectar();
+            $conexion= $con->conexion();
+            $sql= "INSERT INTO compras_realizadas(idLog, fecha,nombre,precio)
+            values('$datos[0]','$datos[1]','$datos[2]','$datos[3]')";
+            
+            return $result= mysqli_query($conexion, $sql);           
+        }          
+        
 
     }
 ?>
