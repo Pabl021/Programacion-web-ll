@@ -79,8 +79,8 @@
         public function insertarProductoCompra($datos){
             $con= new conectar();
             $conexion= $con->conexion();
-            $sql= "INSERT INTO producto_comprar(id_cliente, id_producto,nombre,precio,compro)
-            values('$datos[0]','$datos[1]','$datos[2]','$datos[3]','$datos[4]')";
+            $sql= "INSERT INTO producto_comprar(id_cliente, id_producto,nombre,precio,compro,fecha)
+            values('$datos[0]','$datos[1]','$datos[2]','$datos[3]','$datos[4]','$datos[5]')";
             
             return $result= mysqli_query($conexion, $sql);           
         }

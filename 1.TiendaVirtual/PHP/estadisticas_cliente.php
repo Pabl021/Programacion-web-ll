@@ -1,3 +1,13 @@
+<?php
+include_once "../conexion/conexion.php";
+include_once "metodos.php";
+session_start();
+$user = $_SESSION['user'];
+$idCli= $user['id'];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,24 +28,111 @@
     ?>
 </style> 
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-3"></div>
-            <div class="col-md-5 ">
-                <h1 class="text-center"><b>JP STORE</b></h1>
-                <h3 class="text-center">Tu tienda de confianza ✔️</h3>
-                <h3 class="text-center"></h3>
-                <form action="" method="POST">               
+<nav class=" navbar navbar-expand-lg navbar "style="background-color: #f7b178;">
+
+                <a class="navbar-brand" href="#">
+    <img src="jpstore.jpeg" width="60" height="60" alt="">
+  </a>
+  <a class="navbar-brand" href="" style="color: black;"><h2> <?php echo $user['nombre'] ?></h2></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+    
+        
+    <select id="proC" name="rolCat" onchange="location = this.value">
+
+        <option value="cliente.php" selected="selected" >Escoja su categoría</option>  
+          <?php
+          
+                $obj= new metodos();
+                $sql= "SELECT id, nombre FROM categoria";
+                $datos=$obj->cargarCategorias($sql);
+
+                foreach ($datos as $key ) {                   
+                ?>
+              
+             
+       <option  value="vista_cliente.php?id=<?php echo $key['id'] ?>"><?php echo $key['nombre']?>  </option>       
+      
+           
+
+                    <?php
+                }
+                    ?>
+          </select>  
+      
+     
+      
+
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+    <button type="button" class="btn btn-dark " data-toggle="modal" data-target="#myModal">🛒</button>
+    </form>
+
+    <form class="form-inline my-2 my-lg-0">
+    <a class="estadis" href="estadisticas_cliente.php" style="color:black;"><h5>Compras realizadas</h5></a>
+    </form>
+
+    <form class="form-inline my-2 my-lg-0">
+    <a class="cerrar_ses" href="/logout.php" style="color:black;"><h5>Cerrar Sesión</h5></a>
+    </form>
+  </div>
+</nav>
+
+             
                 
-               <label><h4>Total de productos comprados:<b> </b></h4></label>
-               <label><h4> monto total de los productos:</h4> </label>           
+ <table class="table table-striped table-dark">
+  
+  <tr>
+    <td scope="col">Fecha</td>
+    <td scope="col" >Nombre</td>
+    <td scope="col" >Precio</td>
+  
+  </tr>
+<?php
+$con= new conectar();
+$conexion= $con->conexion();
+
+
+
+
+date_default_timezone_set('America/Costa_Rica');
+$time = time();
+ $fecha=date("d-m-Y",$time);
+
+$sql1="SELECT SUM(precio) FROM producto_comprar WHERE id_cliente=$user[id] AND fecha='$fecha'";
+$result= mysqli_query($conexion, $sql1);
+                  $ver=mysqli_fetch_row($result);
+                  $total=implode($ver);
+                  
+
+
+$sql = "SELECT * FROM producto_comprar WHERE id_cliente=$idCli";
+$res= mysqli_query($conexion, $sql);
+
+while($fil= mysqli_fetch_array($res)){
+
+?>
+
+<tr>
+    
+    <td> <?php echo $fil['fecha']?></td>
+    <td> <?php echo $fil['nombre']?></td>
+    <td> <?php echo $fil['precio']?></td>
+    
+  </tr>
+
+  <?php
+}
+  ?>
+</table>
+<label for=""><h4 class="text-center">Total de compra:<b> <?php  echo $total; ?> </b></h4> </label>  
                 
-                </form>   
-               <a href="cliente.php"> <input  type="submit"   class="btn btn-info" value="Volver">  </a>        
-            </div>
-            <div class="col-md-4"></div>
-    </div>
-</div>
+                
+ 
 
 </body>
 </html>
