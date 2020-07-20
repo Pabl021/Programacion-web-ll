@@ -1,6 +1,7 @@
 <?php 
 include_once "../conexion/conexion.php";
 include_once "metodos.php";
+include_once "cronjob.php";
 session_start();
 require('functions.php');
 $user = $_SESSION['user'];

@@ -108,8 +108,5 @@ $total=implode($ver);
     </div>
 </div>
 
-
-
-
 </body>
 </html>
