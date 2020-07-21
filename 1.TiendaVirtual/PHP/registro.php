@@ -2,16 +2,6 @@
   include "../conexion/conexion.php";
   include "metodos.php"; 
 
-  session_start();
-  if($_SESSION && $_SESSION['user']) {
-    $user1= $_SESSION['user'];
-      if($user1['tipo'] != "cliente"){
-          header('Location: index.php');
-      }
-  }else{
-    header('Location: index.php');
-  }
-
   $errors = '';
     if(isset($_POST['save'])){
       $nombre= $_POST['txtnombre'];
