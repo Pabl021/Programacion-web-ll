@@ -1,7 +1,7 @@
 <?php 
 include_once "../conexion/conexion.php";
 include_once "metodos.php";
-include_once "cronjob.php";
+
 session_start();
 require('functions.php');
 $user = $_SESSION['user'];
@@ -22,7 +22,7 @@ $user = $_SESSION['user'];
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <title>✔️Cliente</title>
 </head>
-<body background="run.jpg">
+<body >
 
 <style type="text/css">
     <?php
@@ -36,7 +36,7 @@ $user = $_SESSION['user'];
                 <a class="navbar-brand" href="#">
     <img src="jpstore.jpeg" width="60" height="60" alt="">
   </a>
-  <a class="navbar-brand" href="" style="color: black;"><h2> <?php echo $user['nombre'] ?></h2></a>
+  <a class="navbar-brand" href="cliente.php" style="color: black;"><h2> <?php echo $user['nombre'] ?></h2></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>

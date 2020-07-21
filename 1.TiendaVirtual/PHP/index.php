@@ -39,7 +39,7 @@ $(document).ready(function() {
 </script>
 
 </head>
-<body background="run.jpg">
+<body>
  
 <style type="text/css">
     <?php
