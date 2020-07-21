@@ -1,6 +1,7 @@
 <?php
   session_start();
   $user = $_SESSION['user'];
+
 ?>
 
 <!DOCTYPE html>
@@ -12,11 +13,11 @@
 </head>
 <body>
     
-    <?php if($user["tipo"] == "cliente") { 
+     <?php  if($user["tipo"] == "cliente") { 
             header('Location: cliente.php');
           }else{
             header('Location: administrador.php');
           } 
-    ?>
+    ?>  
 </body>
 </html>

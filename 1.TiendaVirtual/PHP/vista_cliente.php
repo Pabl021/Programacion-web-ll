@@ -3,6 +3,14 @@
   include_once("metodos.php");
   require('functions.php');
   session_start();
+  if($_SESSION && $_SESSION['user']) {
+    $user1= $_SESSION['user'];
+      if($user1['tipo'] != "cliente"){
+          header('Location: index.php');
+      }
+  }else{
+    header('Location: index.php');
+  }
   $user = $_SESSION['user'];
 ?>
 

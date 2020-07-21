@@ -1,8 +1,13 @@
 <?php
   session_start();
-  if ($_SESSION && $_SESSION['user']){
-    header('Location: /admin.php');
-  }
+   if($_SESSION && $_SESSION['user']){
+     $usu=$_SESSION['user'];
+     if($usu["tipo"] == "cliente"){
+       header('Location:cliente.php');
+     }else if($usu["tipo"] == "administrador"){
+       header('Location:administrador.php');
+     }
+   }
 ?>
 <?php
   

@@ -4,6 +4,14 @@
   session_start();
   $user = $_SESSION['user'];
   $idCli= $user['id'];
+
+  if($_SESSION && $_SESSION['user']) {
+      if($user['tipo'] != "cliente"){
+          header('Location: index.php');
+      }
+  }else{
+    header('Location: index.php');
+  }
 ?>
 
 

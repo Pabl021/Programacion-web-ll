@@ -2,8 +2,16 @@
 include_once "../conexion/conexion.php";
 include_once "metodos.php";
 session_start();
+$user= $_SESSION['user'];
 require('functions.php');
-$user = $_SESSION['user'];
+if($_SESSION && $_SESSION['user']) {
+  $user1= $_SESSION['user'];
+    if($user1['tipo'] != "cliente"){
+        header('Location: index.php');
+    }
+}else{
+  header('Location: index.php');
+}
 ?>
 
 

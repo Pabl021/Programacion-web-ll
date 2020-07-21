@@ -1,6 +1,19 @@
 
 <?php
 include_once "../conexion/conexion.php";
+session_start();
+ require('functions.php');
+
+    if($_SESSION && $_SESSION['user']) {
+      $user = $_SESSION['user'];
+        if($user['tipo'] != "administrador"){
+         
+            header('Location: index.php');
+        }
+    }else{
+      header('Location: index.php');
+    } 
+
 $obj= new conectar();
 $conexion= $obj->conexion();
 $sql="SELECT count(*) nombre FROM cliente WHERE tipo='cliente'";

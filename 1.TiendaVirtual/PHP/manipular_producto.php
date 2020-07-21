@@ -1,6 +1,16 @@
 <?php
   include_once "../conexion/conexion.php";
   include_once "metodos.php";
+  session_start();
+  if($_SESSION && $_SESSION['user']) {
+    $user= $_SESSION['user'];
+      if($user['tipo'] != "administrador"){
+          header('Location: index.php');
+      }
+  }else{
+    header('Location: index.php');
+  }
+  $user = $_SESSION['user'];
 ?>
 <!DOCTYPE html>
 <html lang="en">

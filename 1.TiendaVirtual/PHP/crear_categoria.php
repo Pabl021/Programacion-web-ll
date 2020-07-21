@@ -19,6 +19,17 @@ if(isset($_POST['save'])){
     }
       
 }
+
+session_start();
+  if($_SESSION && $_SESSION['user']) {
+    $user= $_SESSION['user'];
+      if($user['tipo'] != "administrador"){
+          header('Location: index.php');
+      }
+  }else{
+    header('Location: index.php');
+  }
+  $user = $_SESSION['user'];
 ?>
 
 <!DOCTYPE html>
