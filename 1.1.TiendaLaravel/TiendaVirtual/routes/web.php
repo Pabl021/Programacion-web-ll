@@ -21,3 +21,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/cliente', 'ClienteController@index')->name('cliente');
+
+Route::get('/categoria', 'CategoriaController@index')->name('categoria');
