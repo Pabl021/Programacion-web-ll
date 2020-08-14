@@ -8,7 +8,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="<?php echo asset('css/login.css')?>" type="text/css"> 
-    <title>Crear categoria</title>
+    <title>Actualizar categoria</title>
 </head>
 <body>
     
@@ -17,7 +17,8 @@
 @extends('layouts.menu')
 
 @section('content')
-<div class="container">
+
+ <div class="container">
     <div class="row">
         <div class="col-md-3"></div>
             <div class="col-md-5">
@@ -25,10 +26,11 @@
                 <h3 class="text-center">Tu tienda de confianza ✔️</h3>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('insertarCategoria') }}">
+                    <form method="POST" action="{{ route('editarCategoria') }}">
                         @csrf
-
-                                <input id="categoria" type="text" class="form-control @error('categoria') is-invalid @enderror" name="categoria" value="{{ old('categoria') }}" required autocomplete="categoria" placeholder="💡CATEGORÍA" autofocus>
+                    <input type="hidden" name="id" value="{{$editar->id}}">
+                                <input id="categoria" type="text" class="form-control @error('categoria') is-invalid @enderror" name="categoria" 
+                    required autocomplete="categoria" placeholder="💡CATEGORÍA" autofocus value="{{$editar->nombre}}">
 
                                 @error('categoria')
                                     <span class="invalid-feedback" role="alert">
@@ -36,7 +38,7 @@
                                     </span>
                                 @enderror
 
-                                <input  type="submit"  id="creaCu"  name="save" class="btn btn-info" value="Crear categoría">
+                                <input  type="submit"  id="creaCu"  name="save" class="btn btn-info" value="Editar categoría">
                           
                     </form>
                 </div>

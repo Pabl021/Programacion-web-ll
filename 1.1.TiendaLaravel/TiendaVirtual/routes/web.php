@@ -23,3 +23,14 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/cliente', 'ClienteController@index')->name('cliente');
 
 Route::get('/categoria', 'CategoriaController@index')->name('categoria');
+
+Route::get('/manipular', 'CategoriaController@index1')->name('manipular');
+
+Route::get('eliminar/{id}', 'CategoriaController@eliminarCat')->name('eliCat');
+
+Route::get('editar/{id}', 'CategoriaController@editarCat')->name('ediCat');//me carga datos
+Route::post('actualizarCat', 'CategoriaController@editarCategoria')->name('editarCategoria');//me edita los datos
+
+
+Route::post('categoria', 'CategoriaController@insertarCategoria')->name('insertarCategoria');
+
