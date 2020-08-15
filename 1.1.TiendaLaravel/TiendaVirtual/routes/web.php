@@ -32,4 +32,7 @@ Route::post('categoria', 'CategoriaController@insertarCategoria')->name('inserta
 //rutas encargadas para el administrador en la parte de productos
 Route::get('/crearPro', 'ProductoController@index')->name('crearPro');//carga la vista
 Route::post('/insertarPro', 'ProductoController@insertarPro')->name('insertarPro');
-
+Route::get('/manipularPro', 'ProductoController@index1')->name('manipularPro');
+Route::get('eliminarPro/{id}', 'ProductoController@eliminarPro')->name('eliPro');
+Route::get('editarPro/{id}', 'ProductoController@editarPro')->name('cargarProEdi');//me carga datos
+Route::post('editarPro', 'ProductoController@editarProducto')->name('editarProducto');//me edita los datos
