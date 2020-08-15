@@ -18,19 +18,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/cliente', 'ClienteController@index')->name('cliente');
 
+//rutas encargadas para el administrador en la parte de categorias
+Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/categoria', 'CategoriaController@index')->name('categoria');
-
 Route::get('/manipular', 'CategoriaController@index1')->name('manipular');
-
 Route::get('eliminar/{id}', 'CategoriaController@eliminarCat')->name('eliCat');
-
 Route::get('editar/{id}', 'CategoriaController@editarCat')->name('ediCat');//me carga datos
 Route::post('actualizarCat', 'CategoriaController@editarCategoria')->name('editarCategoria');//me edita los datos
-
-
 Route::post('categoria', 'CategoriaController@insertarCategoria')->name('insertarCategoria');
+
+//rutas encargadas para el administrador en la parte de productos
+Route::get('/crearPro', 'ProductoController@index')->name('crearPro');//carga la vista
+Route::post('/insertarPro', 'ProductoController@insertarPro')->name('insertarPro');
 

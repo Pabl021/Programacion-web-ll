@@ -38,9 +38,11 @@
                 </ul>
                   
                 <ul class="navbar-nav mr-auto">                     
-                    <button style=" background-color:#9DDFDD;"> <a style="color: #8a0f01;" href="">Crear producto</a></button>
-                        <button style=" background-color:#9DDFDD; "><a style="color: #8a0f01;" href="">Ver/Editar/Eliminar producto</a></button>                              
+                    <button style=" background-color:#9DDFDD;"> <a style="color: #8a0f01;" href="{{route('crearPro')}}">Crear producto</a></button>
                 </ul>
+                <ul class="navbar-nav mr-auto"> 
+                    <button style=" background-color:#9DDFDD; "><a style="color: #8a0f01;" href="">Ver/Editar/Eliminar producto</a></button>                              
+                </ul> 
                         @guest
                                  
                         @else  
