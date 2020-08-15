@@ -27,7 +27,7 @@
                     <img src="../imgPro/jp.png" width="60" height="60" alt="">
                     </a>
                 <a class="navbar-brand">
-                <h4 style="color: #8a0f01"><b>Admin {{ Auth::user()->name }}</b></h4>
+                <a href="{{Route('home')}}"><h4 style="color: #8a0f01"><b>Administrador</b></h4></a>
                 </a>
                 
                 <ul class="navbar-nav mr-auto">                     
