@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App;
+use App\ProductoModel;
 
 class CategoriaController extends Controller
 {
@@ -37,9 +38,14 @@ class CategoriaController extends Controller
 
     public function eliminarCat($id)
     {
-        $eliminarCat=App\CategoriaModel::FindOrFail($id);
-        $eliminarCat->delete();
-        return redirect('manipular')->with('guardado','Categoría eliminada exitosamente');
+        $verificar=ProductoModel::where('codigo_categoria',$id)->get();
+        
+        if(count($verificar)<1){
+            $eliminarCat=App\CategoriaModel::FindOrFail($id);
+            $eliminarCat->delete();
+            return redirect('manipular')->with('guardado','Categoría eliminada exitosamente');
+        }
+        return redirect('manipular')->with('noGuardado','No se puede eliminar la categoría porque tiene un producto asociado');
     }
 
     public function editarCat($id)//carga datos

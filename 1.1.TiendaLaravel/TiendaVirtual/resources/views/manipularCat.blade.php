@@ -34,9 +34,19 @@
         <span aria-hidden="true">&times;</span>
       </button>
   </div>
-
 @endif
   
+@if (@empty(session('noGuardado')))
+@else
+<div class="alert alert-danger" id="content">
+    <strong>{{session('noGuardado')}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+  </div>
+@endif
+
+
     <table class="table table-dark">
         <thead>
           <tr>
