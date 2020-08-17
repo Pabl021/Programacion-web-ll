@@ -18,7 +18,6 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/cliente', 'ClienteController@index')->name('cliente');
 
 //rutas encargadas para el administrador en la parte de categorias
 Route::get('/home', 'HomeController@index')->name('home');
@@ -36,3 +35,7 @@ Route::get('/manipularPro', 'ProductoController@index1')->name('manipularPro');
 Route::get('eliminarPro/{id}', 'ProductoController@eliminarPro')->name('eliPro');
 Route::get('editarPro/{id}', 'ProductoController@editarPro')->name('cargarProEdi');//me carga datos
 Route::post('editarPro', 'ProductoController@editarProducto')->name('editarProducto');//me edita los datos
+
+//rutas encargadas para el lo que es la parte del cliente
+Route::get('/cliente', 'ClienteController@index')->name('cliente');
+Route::get('cargarPro', 'ClienteController@cargarPro')->name('cargarPro');

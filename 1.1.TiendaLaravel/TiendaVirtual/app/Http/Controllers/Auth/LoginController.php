@@ -38,7 +38,7 @@ public function redirectTo(){
             case 'administrador':
                 return 'home';
                 break;
-        
+               
        
     }
 }

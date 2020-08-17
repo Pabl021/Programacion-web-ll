@@ -38,8 +38,7 @@ class CategoriaController extends Controller
 
     public function eliminarCat($id)
     {
-        $verificar=ProductoModel::where('codigo_categoria',$id)->get();
-        
+        $verificar=ProductoModel::where('codigo_categoria',$id)->get();        
         if(count($verificar)<1){
             $eliminarCat=App\CategoriaModel::FindOrFail($id);
             $eliminarCat->delete();
