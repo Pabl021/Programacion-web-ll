@@ -30,48 +30,17 @@
                 </a>
                 
                 <ul class="navbar-nav mr-auto">
-                      
-                    <select  id="list" onchange="getId();" style=" background-color:#c4fdf6; font-size: 20px; color: #8a0f01; margin-top: -6px; " name="codigo_categoria" class="form-control">    
+                <form action="{{route('cliente')}}" method="GET">
+                    @csrf
+                    <select name="select" onchange="this.form.submit()" id="list" style=" background-color:#c4fdf6; font-size: 20px; color: #8a0f01; margin-top: -6px; "  class="form-control">    
                         <option selected="true" disabled="disabled" value="">SELECCIONE UNA CATEGORÍA</option>                    
                             @foreach ($info as $cat)                          
-                             <option value="{{$cat->id}}">{{$cat->nombre}}</option>
+                                <option value="{{$cat->id}}">{{$cat->nombre}}</option>
                             @endforeach   
-                        </select>                       
+                    </select>  
+                </form>                        
                      </ul>
 
-                     <script>
-                          var dato= null; 
-                          function getId(){
-                            
-                            $.ajaxSetup({
-                            headers: {
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')     
-                            }
-                            });
-
-                             var id_pro = document.getElementById('list').value;
-                            $.ajax({
-                                type:'GET',
-                                url:"{{ route('cargarPro') }}",
-                                data:{id:id_pro},
-                                        
-                                
-                                success:function(data){  
-                                    debugger;                                                               
-                                    dato=data;   
-                                    for (let index = 0; index < dato.length; index++) {
-                                        var element = dato[index];
-                                        console.log(element);
-                                    }                                    
-                                  
-                                }
-
-                            });
-                             
-                      //console.log(dato);      
-                          }
-
-                     </script>
 
                         @guest
                                  

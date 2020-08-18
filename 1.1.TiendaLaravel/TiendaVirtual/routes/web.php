@@ -38,4 +38,3 @@ Route::post('editarPro', 'ProductoController@editarProducto')->name('editarProdu
 
 //rutas encargadas para el lo que es la parte del cliente
 Route::get('/cliente', 'ClienteController@index')->name('cliente');
-Route::get('cargarPro', 'ClienteController@cargarPro')->name('cargarPro');

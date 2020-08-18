@@ -16,6 +16,18 @@
 </head>
 <body>
    
+         @foreach ($producto as $pro)
+        <div class="card" style="width: 18rem;">
+          <img src="{{asset('storage/Producto').'/'.$pro->imagen}}">
+        <img class="card-img-top" src="{{asset('storage/Producto'.$pro->imagen)}}" >       
+          <div class="card-body">
+            <h5 class="card-title">{{$pro->nombre}}</h5>
+            <p class="card-text">{{$pro->descripcion}}</p>
+            <a href="#" class="btn btn-primary">Agrgar al 🛒</a>
+          </div>
+        </div>
+        @endforeach 
+    
 </body>
 </html>
 @endsection
