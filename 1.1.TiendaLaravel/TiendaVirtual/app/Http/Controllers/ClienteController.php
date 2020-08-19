@@ -16,9 +16,8 @@ class ClienteController extends Controller
         $idCat=intval($dato->input('select'));
         $producto=App\ProductoModel::where('codigo_categoria',$idCat)->get();
         $info=App\CategoriaModel::All();
-         return view('cliente', compact('info'), compact('producto'));
+        return view('cliente', compact('info'), compact('producto'));
      }
 
-    
 
 }

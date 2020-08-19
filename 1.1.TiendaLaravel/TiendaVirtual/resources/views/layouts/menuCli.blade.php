@@ -26,7 +26,7 @@
                     <img src="../imgPro/jp.png" width="60" height="60" alt="">
                     </a>
                 <a class="navbar-brand">
-                <a href="{{Route('cliente')}}"><h4 style="color: #8a0f01"><b> Cliente: {{ Auth::user()->name }}</b></h4></a>
+                <a href="{{Route('cliente')}}"><h4 style="color: #8a0f01"><b> Cliente: {{ auth()->user()->name }}</b></h4></a>
                 </a>
                 
                 <ul class="navbar-nav mr-auto">
@@ -45,11 +45,11 @@
                         @guest
                                  
                         @else
-                        <form class="form-inline my-2 my-lg-0">
-                            <button type="button" class="btn btn-dark " >🛒</button>
-                          </form>
+                        
+                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><a href="{{route('cargarPro')}}"> 🛒</a></button>
+                        
                     
-                          <form class="form-inline my-2 my-lg-0">
+                          <form class="form-inline my-2 my-lg-0">                       
                            <a class="estadis" style="color: #8a0f01;" ><h4><b> Compras realizadas</b></h4></a>
                           </form>  
                                                  
@@ -74,6 +74,10 @@
             @yield('content')
         </main>
     </div>
+
+
+
+
   
 </body>
 </html>

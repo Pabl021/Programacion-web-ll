@@ -15,15 +15,18 @@
     <title>Cliente</title>
 </head>
 <body>
-   
+  
          @foreach ($producto as $pro)
-        <div class="card" style="width: 18rem;">
-          <img src="{{asset('storage/Producto').'/'.$pro->imagen}}">
-        <img class="card-img-top" src="{{asset('storage/Producto'.$pro->imagen)}}" >       
+        
+        <div class="card text-white bg-dark mb-3" style="width: 18rem;" >
+          
+        <img  class=" img card-img-top" src="{{asset('/storage/'.$pro->imagen)}}" style=" width: 100px; height: 100px; align:center;" >       
           <div class="card-body">
-            <h5 class="card-title">{{$pro->nombre}}</h5>
-            <p class="card-text">{{$pro->descripcion}}</p>
-            <a href="#" class="btn btn-primary">Agrgar al 🛒</a>
+            <h5  class="card-title" style="text-align: center">{{$pro->nombre}}</h5>
+            <p class="card-text" style="text-align: center">{{$pro->descripcion}}</p>
+            <h5 class="card-title" style="text-align: center">{{$pro->precio}}</h5>
+            <h5 style="display: none"> {{$pro->id}} </h5>
+            <a href="{{route('cargarId',$pro->id)}}" class="btn btn-primary">Agregar al 🛒</a>
           </div>
         </div>
         @endforeach 

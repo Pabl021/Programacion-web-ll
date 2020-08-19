@@ -29,11 +29,11 @@ class ProductoController extends Controller
         ]);
 
         $ruta= Storage::disk('public')->put('Producto', $producto->file('imagen'));
-        $ruta2= asset($ruta);
+       
        $pro=new App\ProductoModel;
        $pro->nombre= $producto->nombre;
        $pro->descripcion= $producto->descripcion;
-       $pro->imagen= $ruta2;
+       $pro->imagen=  $ruta;
        $pro->codigo_categoria= $producto->codigo_categoria;
        $pro->stock= $producto->stock;
        $pro->precio= $producto->precio;
