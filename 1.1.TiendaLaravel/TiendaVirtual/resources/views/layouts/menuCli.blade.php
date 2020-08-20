@@ -46,7 +46,7 @@
                                  
                         @else
                         
-                        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"><a href="{{route('cargarPro')}}"> 🛒</a></button>
+                        <a href="{{route('cargarPro')}}"><button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal"> 🛒</button></a>
                         
                     
                           <form class="form-inline my-2 my-lg-0">                       

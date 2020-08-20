@@ -20,13 +20,14 @@ class CarritoController extends Controller
         $ins->compra= false;
         $ins->fecha= $fecha;
         $ins->save();
-        return redirect('cliente');       
+        return redirect()->back();       
     }
 
    public function cargarPro(){
        $idLog=auth()->user()->id;
       $producto=App\CarritoModel::where('id_Log',$idLog)->Where('compra', false)->get()->sortBy('nombre');
-      return view('modal',compact('producto'));
+     $total= App\CarritoModel::where('id_Log',$idLog)->Where('compra', false)->sum('monto');
+      return view('modal',compact('producto'), compact('total'));
    }
 
    public function eliminarProSel($id){
@@ -34,5 +35,12 @@ class CarritoController extends Controller
     $eliminarPro->delete();
     return redirect('cargarPro');
    }
+
+public function productoComprado(){
+    $idLog=auth()->user()->id;
+    App\CarritoModel::where('id_Log',$idLog)->Where('compra', false)->update(array('compra' => true));
+
+}
+
     
 }
