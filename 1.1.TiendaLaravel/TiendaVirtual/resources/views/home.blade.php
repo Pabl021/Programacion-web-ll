@@ -49,8 +49,8 @@
                       @csrf
                   
                      <h3><label for="">Clientes registrados: <b>{{count($user)-1}}</b> </label></h3></br>
-                     <h3><label for="">Total de productos vendidos: </label></h3></br>
-                     <h3><label for="">Monto total en ventas: </label></h3></br>
+                     <h3><label for="">Total de productos vendidos: <b>{{count($cantPro)}}</b></label></h3></br>
+                  <h3><label for="">Monto total en ventas: <b>{{$total}}</b> </label></h3></br>
                   </form>
               </div>
           </div>

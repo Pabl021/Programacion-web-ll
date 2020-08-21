@@ -50,8 +50,17 @@
                         
                     
                           <form class="form-inline my-2 my-lg-0">                       
-                           <a class="estadis" style="color: #8a0f01;" ><h4><b> Compras realizadas</b></h4></a>
-                          </form>  
+                            <div class="dropdown">
+                                <button  style=" background-color:#c4fdf6; font-size: 20px; color: #8a0f01; " class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  Tus compras
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"style=" background-color:#c4fdf6;" >
+                                <a style=" background-color:#c4fdf6; font-size: 20px; color: #8a0f01; " class="dropdown-item" href="{{route('estadistica')}}">Estadisticas</a>
+                                  <a style=" background-color:#c4fdf6; font-size: 20px; color: #8a0f01; " class="dropdown-item" href="{{route('ordenCompra')}}">Compras realizadas</a>
+                                  
+                                </div>
+                              </div>                      
+                                </form>  
                                                  
                                    <h4><b> <a style="color: #8a0f01"  href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

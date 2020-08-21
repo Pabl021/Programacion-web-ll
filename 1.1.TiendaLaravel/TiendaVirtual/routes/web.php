@@ -38,7 +38,9 @@ Route::post('editarPro', 'ProductoController@editarProducto')->name('editarProdu
 
 //rutas encargadas para el lo que es la parte del cliente
 Route::get('/cliente', 'ClienteController@index')->name('cliente');
+Route::get('/estadistica', 'ClienteController@estadistica')->name('estadistica');
 Route::get('cargarId/{id}', 'CarritoController@cargarId')->name('cargarId');
 Route::get('cargarPro', 'CarritoController@cargarPro')->name('cargarPro');//para que el cliente vea lo que tieneen lista para comprar
 Route::get('eliminarProSel/{id}', 'CarritoController@eliminarProSel')->name('eliProSel');
 Route::get('productoComprado', 'CarritoController@productoComprado')->name('productoComprado');
+Route::get('ordenCompra', 'ClienteController@ordenCompra')->name('ordenCompra');

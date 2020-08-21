@@ -6,9 +6,12 @@ use App\CarritoModel;
 use Illuminate\Http\Request;
 use App;
 use Carbon\Carbon;
+use SebastianBergmann\Environment\Console;
+
 class CarritoController extends Controller
 {
     public function cargarId($id){
+
         $fecha = Carbon::now();
         $pro=App\ProductoModel::where('id',$id)->get();      
         $ins=new App\CarritoModel;
@@ -38,8 +41,16 @@ class CarritoController extends Controller
 
 public function productoComprado(){
     $idLog=auth()->user()->id;
-    App\CarritoModel::where('id_Log',$idLog)->Where('compra', false)->update(array('compra' => true));
+    $producto=App\CarritoModel::where('id_Log',$idLog)->Where('compra', false)->get();
+    
+    foreach ($producto as $pro) { 
+        $insPro= App\ProductoModel::where('id',$pro->id_Pro)->get()[0];     
+        $insPro->stock-=1;   
+        $insPro->update();              
+    }
 
+    App\CarritoModel::where('id_Log',$idLog)->Where('compra', false)->update(array('compra' => true));
+    return redirect('cliente');
 }
 
     

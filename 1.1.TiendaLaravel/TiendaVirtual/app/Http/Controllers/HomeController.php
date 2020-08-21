@@ -22,8 +22,14 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
+    { 
+        $idLog=auth()->user()->id;
+        $cantPro=App\CarritoModel::Where('compra', true)->get();
+        $total= App\CarritoModel::Where('compra', true)->sum('monto');
         $user=App\User::All();
-        return view('home', compact('user'));
+
+        return view('home', compact('user','total','cantPro'));
+       
     }
+
 }

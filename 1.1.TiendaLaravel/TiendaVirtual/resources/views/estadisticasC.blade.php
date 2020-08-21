@@ -16,23 +16,27 @@
 </head>
 <body>
   
-
-  
-         @foreach ($producto as $pro)
-        
-        <div class="card text-white bg-dark mb-3" style="width: 18rem;" >
-          
-        <img  class=" img card-img-top" src="{{asset('/storage/'.$pro->imagen)}}" style=" width: 100px; height: 100px; align:center;" >       
-          <div class="card-body">
-            <h5  class="card-title" style="text-align: center">{{$pro->nombre}}</h5>
-            <p class="card-text" style="text-align: center">{{$pro->descripcion}}</p>
-            <h5 class="card-title" style="text-align: center">{{$pro->precio}}</h5>
-            <h5 style="display: none"> {{$pro->id}} </h5>
-            <a href="{{route('cargarId',$pro->id)}}" class="btn btn-primary">Agregar al 🛒</a>
-          </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+                <div class="col-md-5">
+                    <h1 class="text-center"><b>JP SPORT</b></h1>
+                    <h3 class="text-center">Tu tienda de confianza ✔️</h3>
+      
+                    <div class="card-body">
+                        <form>
+                            @csrf
+                        
+                        <h3><label for="">Total de productos adquiridos: <b>{{count($totPro)}}</b> </label></h3></br>
+                           <h3><label for="">Monto total de compras realizadas: <b>{{$precioPro}}</b></label></h3></br>
+                        
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-        @endforeach 
-    
+      </div>
+   
         
 </body>
 </html>
