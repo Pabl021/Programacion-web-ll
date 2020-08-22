@@ -29,12 +29,12 @@
 
 @if (@empty(session('guardado')))
 @else
-<div class="alert alert-success" role="alert" id="content">
-  <strong>{{session('guardado')}}</strong>
-  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
-</div>
+  <div class="alert alert-success" role="alert" id="content">
+    <strong>{{session('guardado')}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
 @endif
 
 <div class="container">
@@ -43,20 +43,17 @@
           <div class="col-md-5">
               <h1 class="text-center"><b>JP SPORT</b></h1>
               <h3 class="text-center">Tu tienda de confianza ✔️</h3>
-
               <div class="card-body">
                   <form>
-                      @csrf
-                  
+                      @csrf                 
                      <h3><label for="">Clientes registrados: <b>{{count($user)-1}}</b> </label></h3></br>
                      <h3><label for="">Total de productos vendidos: <b>{{count($cantPro)}}</b></label></h3></br>
-                  <h3><label for="">Monto total en ventas: <b>{{$total}}</b> </label></h3></br>
+                    <h3><label for="">Monto total en ventas: <b>{{$total}}</b> </label></h3></br>
                   </form>
               </div>
           </div>
       </div>
   </div>
 </div>
-
 
 @endsection

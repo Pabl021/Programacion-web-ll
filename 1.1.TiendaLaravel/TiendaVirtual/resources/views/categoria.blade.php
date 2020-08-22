@@ -23,21 +23,16 @@
             <div class="col-md-5">
                 <h1 class="text-center"><b>JP SPORT</b></h1>
                 <h3 class="text-center">Tu tienda de confianza ✔️</h3>
-
                 <div class="card-body">
                     <form method="POST" action="{{ route('insertarCategoria') }}">
                         @csrf
-
-                                <input id="categoria" type="text" class="form-control @error('categoria') is-invalid @enderror" name="categoria" value="{{ old('categoria') }}" required autocomplete="categoria" placeholder="💡CATEGORÍA" autofocus>
-
-                                @error('categoria')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ "La categoría está nula❗" }}</strong>
-                                    </span>
-                                @enderror
-
-                                <input  type="submit"  id="creaCu"  name="save" class="btn btn-info" value="Crear categoría">
-                          
+                        <input id="categoria" type="text" class="form-control @error('categoria') is-invalid @enderror" name="categoria" value="{{ old('categoria') }}" required autocomplete="categoria" placeholder="💡CATEGORÍA" autofocus>
+                        @error('categoria')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ "La categoría está nula❗" }}</strong>
+                            </span>
+                        @enderror
+                        <input  type="submit"  id="creaCu"  name="save" class="btn btn-info" value="Crear categoría">                         
                     </form>
                 </div>
             </div>

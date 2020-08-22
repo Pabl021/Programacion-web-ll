@@ -28,46 +28,35 @@
                     </a>
                 <a class="navbar-brand">
                 <a href="{{Route('home')}}"><h4 style="color: #8a0f01"><b>Administrador</b></h4></a>
-                </a>
-                
+                </a>               
                 <ul class="navbar-nav mr-auto">                     
                     <button style=" background-color:#9DDFDD;"> <a style="color: #8a0f01;" href="{{route('categoria')}}">Crear categoría</a></button>
                 </ul>
                 <ul class="navbar-nav mr-auto">                     
                         <button style=" background-color:#9DDFDD; "><a style="color: #8a0f01;" href="{{route('manipular')}}">Ver/Editar/Eliminar categoría</a></button>                              
-                </ul>
-                  
+                </ul>                 
                 <ul class="navbar-nav mr-auto">                     
                     <button style=" background-color:#9DDFDD;"> <a style="color: #8a0f01;" href="{{route('crearPro')}}">Crear producto</a></button>
                 </ul>
                 <ul class="navbar-nav mr-auto"> 
                 <button style=" background-color:#9DDFDD; "><a style="color: #8a0f01;" href="{{route('manipularPro')}}">Ver/Editar/Eliminar producto</a></button>                              
                 </ul> 
-                        @guest
-                                 
-                        @else  
-                                                 
-                                   <h4><b> <a style="color: #8a0f01"  href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Cerrar Sesión') }}
-                                    </a></b></h4>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                
-                           
-                        @endguest
-                    
-               
+                    @guest                               
+                        @else                                                   
+                            <h4><b> <a style="color: #8a0f01"  href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                {{ __('Cerrar Sesión') }}
+                            </a></b></h4>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>                                                         
+                    @endguest                                
             </div>
         </nav>
-
         <main class="py-4">
             @yield('content')
         </main>
     </div>
-  
 </body>
 </html>

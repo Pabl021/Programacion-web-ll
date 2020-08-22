@@ -28,42 +28,40 @@
 
 @if (@empty(session('guardado')))
 @else
-<div class="alert alert-success" id="content">
+  <div class="alert alert-success" id="content">
     <strong>{{session('guardado')}}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
-
 @endif
   
-    <table class="table table-dark">
-        <thead>
-          <tr>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">DESCRIPCIÓN</th>
-            {{-- <th scope="col">IMAGEN</th> --}}
-            <th scope="col">CÓDIGO_CAT</th>
-            <th scope="col">STOCK</th>
-            <th scope="col">PRECIO</th>
-            <th scope="col">ACCIONES</th>       
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($info as $pro)       
-          <tr>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">DESCRIPCIÓN</th>
+   {{-- <th scope="col">IMAGEN</th> --}}
+        <th scope="col">CÓDIGO_CAT</th>
+        <th scope="col">STOCK</th>
+        <th scope="col">PRECIO</th>
+        <th scope="col">ACCIONES</th>       
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($info as $pro)       
+        <tr>
           <th scope="row">{{$pro->nombre}}</th>
           <th scope="row">{{$pro->descripcion}}</th>
           {{-- <th scope="row">{{$pro->imagen}}</th> --}}
           <th scope="row">{{$pro->codigo_categoria}}</th>
           <th scope="row">{{$pro->stock}}</th>
           <th scope="row">{{$pro->precio}}</th>
-          <th scope="row"><a href="{{route('eliPro',$pro)}}">✖️</a> |<a href="{{route('cargarProEdi',$pro)}}"> 🖊️</a></th>
-          
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
-      @endsection
+          <th scope="row"><a href="{{route('eliPro',$pro)}}">✖️</a> |<a href="{{route('cargarProEdi',$pro)}}"> 🖊️</a></th>         
+        </tr>
+      @endforeach
+    </tbody>
+  </table>
+    @endsection
 </body>
 </html>

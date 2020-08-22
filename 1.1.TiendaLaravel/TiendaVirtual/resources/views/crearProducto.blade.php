@@ -32,7 +32,6 @@
   </div>
 
 @endif
-
     <div class="container">
         <div class="row">
             <div class="col-md-3"></div>
@@ -40,58 +39,54 @@
                     <h1 class="text-center"><b>JP STORE</b></h1>
                     <h3 class="text-center">Tu tienda de confianza ✔️</h3>
                     <h3 class="text-center">Crear producto</h3>
-                <form action="{{route('insertarPro')}}" method="POST" enctype="multipart/form-data">
+                    <form action="{{route('insertarPro')}}" method="POST" enctype="multipart/form-data">
                        @csrf
                         <input required id="inNom" type="text" class="form-control @error('nombre') is-invalid @enderror" name="nombre" value="{{ old('nombre') }}" placeholder="NOMBRE"autocomplete="off"  autofocus  autocomplete="nombre"><br>
-                        @error('nombre')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ "El nombre está nulo❗" }}</strong>
-                            </span>
-                        @enderror
+                            @error('nombre')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ "El nombre está nulo❗" }}</strong>
+                                </span>
+                            @enderror
                         <input required id="inDes" type="text" class="form-control @error('descripcion') is-invalid @enderror" name="descripcion" value="{{ old('descripcion') }}" placeholder="DESCRIPCION" autocomplete="off" autofocus  autocomplete="descripcion"><br>
-                        @error('descripcion')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ "La descripción es nula❗" }}</strong>
-                            </span>
-                        @enderror
+                            @error('descripcion')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ "La descripción es nula❗" }}</strong>
+                                </span>
+                            @enderror
                         <input required id="inIma" type="file" class="form-control @error('imagen') is-invalid @enderror" name="imagen" value="{{ old('imagen') }}" autocomplete="off"  autofocus  autocomplete="imagen"><br>
-                        @error('imagen')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ "La imagen es nula❗" }}</strong>
-                            </span>
-                        @enderror
+                            @error('imagen')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ "La imagen es nula❗" }}</strong>
+                                </span>
+                            @enderror
                        <select required  id="proC" name="codigo_categoria" class="form-control @error('categoria') is-invalid @enderror" value="{{ old('categoria') }}" autocomplete="off" autofocus  autocomplete="categoria">    
                         <option value="">SELECCIONE UNA CATEGORÍA</option>                    
                             @foreach ($categoria as $cat)                          
                                 <option value="{{$cat->id}}">{{$cat->nombre}}</option>
                             @endforeach   
                         </select><br>
-                        @error('categoria')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ "La categoria es nula❗" }}</strong>
-                            </span>
-                        @enderror
+                            @error('categoria')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ "La categoria es nula❗" }}</strong>
+                                </span>
+                            @enderror
                         <input required id="inSto" type="text" min="1" pattern="^[0-9]+" class="form-control @error('stock') is-invalid @enderror" name="stock" value="{{ old('stock') }}" autocomplete="off" placeholder="STOCK" autofocus autocomplete="stock"><br>
-                        @error('stock')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ "Revisa el Stock❗" }}</strong>
-                            </span>
-                        @enderror                      
+                            @error('stock')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ "Revisa el Stock❗" }}</strong>
+                                </span>
+                            @enderror                      
                         <input required id="inPre" type="text" min="1" pattern="^[0-9]+" class="form-control @error('precio') is-invalid @enderror" name="precio" value="{{ old('precio') }}" autocomplete="off" placeholder="PRECIO" autofocus  autocomplete="precio"><br>
-                        @error('precio')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ "Revisa el precio❗" }}</strong>
-                            </span>
-                        @enderror
-                       
+                            @error('precio')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ "Revisa el precio❗" }}</strong>
+                                </span>
+                            @enderror                       
                         <input  type="submit"  id="creaCu"  name="save" class="btn btn-info" value="Crear producto">
-
-                      </form>  
-                </div>
+                    </form>  
+            </div>
         </div>
     </div>
-    @endsection
-  
-
+@endsection
 </body>
 </html>

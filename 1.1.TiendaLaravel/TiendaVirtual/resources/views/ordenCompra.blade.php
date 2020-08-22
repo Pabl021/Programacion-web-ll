@@ -16,52 +16,44 @@
 </head>
 <body>
   
-    <div class="container">
-        <div class="row">
-            <div class="col-md-3"></div>
-                <div class="col-md-5">
-                    <h1 class="text-center"><b>JP SPORT</b></h1>
-                    <h3 class="text-center">Tu tienda de confianza ✔️</h3>
-      
-                    
-                        <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2" action="{{route('ordenCompra')}}" method="GET">
-                            @csrf
-                            <label for=""><h4>Selecciona la fecha de compra del producto: </h4>
-                                <input type="date" name="fecha" placeholder="Año/Mes/Día" > <button>🔎</button> </label>
-                            <i class="fas fa-search" aria-hidden="true"></i>
-                          </form>
-
-
-
-                          <table class="table table-dark">
-                            <thead>
-                              <tr>
-                                <th scope="col">NOMBRE</th>
-                                <th scope="col">PRECIO</th>
-                                <th scope="col">FECHA</th>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3"></div>
+        <div class="col-md-5">
+          <h1 class="text-center"><b>JP SPORT</b></h1>
+          <h3 class="text-center">Tu tienda de confianza ✔️</h3>                        
+          <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2" action="{{route('ordenCompra')}}" method="GET">
+            @csrf
+            <label for=""><h4>Selecciona la fecha de compra del producto: </h4>
+            <input type="date" name="fecha" placeholder="Año/Mes/Día" > <button>🔎</button> </label>
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </form>
+          <table class="table table-dark">
+            <thead>
+              <tr>
+                <th scope="col">NOMBRE</th>
+                <th scope="col">PRECIO</th>
+                <th scope="col">FECHA</th>
                                      
-                              </tr>
-                            </thead>
-                            <tbody>
-                                @foreach ($producto as $cat)       
-                              <tr>
-                              <th scope="row">{{$cat->nombre}}</th>
-                              <th scope="row">{{$cat->monto}}</th>
-                              <th scope="row">{{$cat->fecha}}</th>
-                              </tr>                             
-                              @endforeach
-                              <tr>
-                                <th scope="row">{{'Total pagado: '.$total}}</th>                               
-                                </tr>
-                            </tbody>
-                          </table>
-                         
-                </div>
-            </div>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach ($producto as $cat)       
+                <tr>
+                  <th scope="row">{{$cat->nombre}}</th>
+                  <th scope="row">{{$cat->monto}}</th>
+                  <th scope="row">{{$cat->fecha}}</th>
+                </tr>                             
+              @endforeach
+                <tr>
+                  <th scope="row">{{'Total pagado: '.$total}}</th>                               
+                </tr>
+            </tbody>
+          </table>                
         </div>
       </div>
-   
-        
+    </div>
+  </div>      
 </body>
 </html>
 @endsection

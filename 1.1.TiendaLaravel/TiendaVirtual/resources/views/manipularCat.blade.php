@@ -28,42 +28,41 @@
 
 @if (@empty(session('guardado')))
 @else
-<div class="alert alert-success" id="content">
+  <div class="alert alert-success" id="content">
     <strong>{{session('guardado')}}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 @endif
   
 @if (@empty(session('noGuardado')))
 @else
-<div class="alert alert-danger" id="content">
+  <div class="alert alert-danger" id="content">
     <strong>{{session('noGuardado')}}</strong>
     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
 @endif
 
 
-    <table class="table table-dark">
-        <thead>
-          <tr>
-            <th scope="col">NOMBRE</th>
-            <th scope="col">ACCIONES</th>       
-          </tr>
-        </thead>
-        <tbody>
-            @foreach ($objeto as $cat)       
-          <tr>
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th scope="col">NOMBRE</th>
+        <th scope="col">ACCIONES</th>       
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($objeto as $cat)       
+        <tr>
           <th scope="row">{{$cat->nombre}}</th>
-          <th scope="row"><a href="{{route('eliCat',$cat)}}">✖️</a> |<a href="{{route('ediCat',$cat)}}"> 🖊️</a></th>
-          
-          </tr>
-          @endforeach
-        </tbody>
-      </table>
+          <th scope="row"><a href="{{route('eliCat',$cat)}}">✖️</a> |<a href="{{route('ediCat',$cat)}}"> 🖊️</a></th>         
+        </tr>
+      @endforeach
+    </tbody>
+  </table>
       @endsection
 </body>
 </html>
